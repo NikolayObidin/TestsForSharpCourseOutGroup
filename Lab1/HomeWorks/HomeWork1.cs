@@ -15,12 +15,10 @@ namespace Lab1.HomeWorks
         /// <returns>Массив в котором поменяны местами максимальный отрицательный элемент и минимальный положительный</returns>
         public static int[] Variant1(int[] temp)
         {
-            int max = temp[0];
-            int min = temp[0];
-            for (int i = 1; i < temp.Length; i++) ;
-            if (temp[i] > max) ;
-            max = temp[i];
-            min = temp[i];
+            int maxNegative = temp[0];
+            int minNegative = temp[0];
+            for (int i = 1; i < temp.Length; i++);
+
 
         }
 
@@ -31,9 +29,10 @@ namespace Lab1.HomeWorks
         /// <returns>Сумма элементов, состоящих на чётных позициях массива</returns>
         public static int Variant2(int[] temp)
         {
-            for (int = 0, i < temp.Length, i++) ;
-            int result = temp.Where((item, index) => index % 2 == 0).Sum();
-
+            int result = 0;
+            for (int i = 1; i < temp.Length; i+=2)
+                result +=temp[i];
+            return result;
         }
 
         /// <summary>
@@ -55,13 +54,13 @@ namespace Lab1.HomeWorks
         /// <returns>Массив в котором *3 каждый положительный элемент, который стоит перед отрицательным</returns>
         public static int[] Variant4(int[] temp)
         {
-            for (int i = 0; i < temp.Length; i++)
+            for (int i = 1; i < temp.Length; i++)
             {
-                if (i + 1 < 0);
-                temp[i] = temp[i] * 3;
-                Console.WriteLine(temp[i]);
-            }
-            { return temp; }
+                if (temp[i] < 0 & temp[i - 1] > 0)
+                    temp[i - 1] = temp[i - 1] * 3;
+            }                
+            return temp;
+        }
 
 
         /// <summary>
@@ -71,7 +70,8 @@ namespace Lab1.HomeWorks
         /// <returns>Разница между средним арифметическим и значение минимального элемента</returns>
         public static double Variant5(int[] temp)
         {
-            throw new System.Exception("Не реализован вариант5");
+            int average = 0;
+
         }
     }
 }
