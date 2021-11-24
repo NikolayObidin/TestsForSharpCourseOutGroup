@@ -13,7 +13,13 @@ namespace Lab1.HomeWorks
         /// <returns>Самая длинная строка, ее длина, самая маленькая трока и ее длина. Пример вывода return ("max1", 4, "min", 3);</returns>
         public static (string max, int lengthMax, string min, int lengthMin) Variant1(string[] temp)
         {
-            throw new System.Exception("Не реализован вариант1");
+            var max = temp[0].Length;
+            var min = 0;
+            for (var i = 0; i < temp.Length; i++) ;
+            if (temp[i].Length >= max)
+            {
+                max = temp[i].Length;
+            }
         }
 
         /// <summary>
