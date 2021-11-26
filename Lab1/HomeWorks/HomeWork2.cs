@@ -1,3 +1,7 @@
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+
 namespace Lab1.HomeWorks
 {
     /// <summary>
@@ -13,13 +17,12 @@ namespace Lab1.HomeWorks
         /// <returns>Самая длинная строка, ее длина, самая маленькая трока и ее длина. Пример вывода return ("max1", 4, "min", 3);</returns>
         public static (string max, int lengthMax, string min, int lengthMin) Variant1(string[] temp)
         {
-            var max = temp[0].Length;
-            var min = 0;
-            for (var i = 0; i < temp.Length; i++) ;
-            if (temp[i].Length >= max)
-            {
-                max = temp[i].Length;
-            }
+            var orderedList = temp.OrderBy(x => x.Length);
+            var min = orderedList.First();
+            var max = orderedList.Last();
+            var lengthMax = max.Length;
+            var lengthMin = min.Length;
+            return (max, lengthMax, min, lengthMin);
         }
 
         /// <summary>
@@ -29,7 +32,8 @@ namespace Lab1.HomeWorks
         /// <returns>Слово состоящее только из цифр.</returns>
         public static string Variant2(string[] temp)
         {
-            throw new System.Exception("Не реализован вариант6");
+            var numericText = temp.Where(x => Array.TrueForAll(x.ToCharArray(), Char.IsDigit));
+            return numericText.Last();
         }
     }
 }
