@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+
 namespace Lab1.HomeWorks
 {
     /// <summary>
@@ -13,9 +16,36 @@ namespace Lab1.HomeWorks
         /// <returns>Массив в котором поменяны местами максимальный отрицательный элемент и минимальный положительный</returns>
         public static int[] Variant1(int[] temp)
         {
-            throw new System.Exception("Не реализован вариант1");
+            int superNegative = 0;
+            int minPositive = int.MaxValue;
+            foreach (int a in temp)
+            {
+                if (a < 0 && a < superNegative)
+                {
+                    superNegative = a;
+                }
+                else if (a > 0 && a < minPositive)
+                {
+                    minPositive = a;
+                }
+            }
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[i] == superNegative)
+                {
+                    temp[i] = minPositive;
+                }
+                else if (temp[i] == minPositive)
+                {
+                    temp[i] = superNegative;
+                }
+            }
+            int tempElement = superNegative;
+            superNegative = minPositive;
+            minPositive = tempElement;
+            for (int i = 0; i < temp.Length; i++) ;
+            return temp;
         }
-
         /// <summary>
         /// В массиве целых чисел определить сумму элементов, состоящих на чётных позициях
         /// </summary>
@@ -23,7 +53,10 @@ namespace Lab1.HomeWorks
         /// <returns>Сумма элементов, состоящих на чётных позициях массива</returns>
         public static int Variant2(int[] temp)
         {
-            throw new System.Exception("Не реализован вариант2");
+            int result = 0;
+            for (int i = 2; i < temp.Length; i += 2)
+            { result += temp[i]; }
+            return result;
         }
 
         /// <summary>
@@ -33,7 +66,9 @@ namespace Lab1.HomeWorks
         /// <returns>Массив в котором поменяны отрицательные элементы на нули</returns>
         public static int[] Variant3(int[] temp)
         {
-            throw new System.Exception("Не реализован вариант3");
+            for (int i = 0; i < temp.Length; i++)
+                if (temp[i] < 0) temp[i] = 0;
+            return temp;
         }
 
         /// <summary>
@@ -43,8 +78,18 @@ namespace Lab1.HomeWorks
         /// <returns>Массив в котором *3 каждый положительный элемент, который стоит перед отрицательным</returns>
         public static int[] Variant4(int[] temp)
         {
-            throw new System.Exception("Не реализован вариант4");
+            for (int i = 0; i < temp.Length; i++)
+
+            {
+                if (temp[i] > 0 && temp[i + 1] < 0 && i <= temp.Length)
+                {
+                    temp[i] *= 3;
+
+                }
+            }
+            return temp;
         }
+
 
         /// <summary>
         /// В массиве целых чисел найти разницу между средним арифметическим и значение минимального элемента.
@@ -53,7 +98,9 @@ namespace Lab1.HomeWorks
         /// <returns>Разница между средним арифметическим и значение минимального элемента</returns>
         public static double Variant5(int[] temp)
         {
-            throw new System.Exception("Не реализован вариант5");
+            double avg = temp.Average();
+            int min = temp.Min();
+            return avg - min;
         }
     }
 }
